@@ -1,25 +1,83 @@
 <app-header></app-header>
 
-<div class="area-banner">
-  <img class="img-fluid" src="assets/img/banner.png" width="700" alt="Logo do Projeto Semear">
-</div>
+<ngb-carousel #carousel [animation]="false" [showNavigationArrows]="false" [pauseOnHover]="false" [pauseOnFocus]="false">
+  <ng-template ngbSlide>
+    <div>
+      <img src="assets/img/banner1.png" class="img-fluid" alt="Descarte corretamente o que você não usa mais">
+    </div>
+  </ng-template>
+  <ng-template ngbSlide>
+    <div>
+      <img src="assets/img/banner2.png" class="img-fluid" alt="Materiais como chumbo causam impactos negativos ao meio ambiente">
+    </div>
+  </ng-template>
+</ngb-carousel>
 
 <div class="container">
   <section class="row secao-1">
-    <h2 class="text-center mb-4">VENHA SEMEAR</h2>
-    <div class="col-md-6">
-      <h4>O <b>Projeto Semear</b> é uma iniciativa de múltiplas organizações com a finalidade de disceminar a prática de plantio.</h4>
-      <p>Nosso objetivo é fornecer sementes de variadas espécies de plantas e árvores, além de informações de como cultivá-las.</p>
-      <p>As sementes podem ser retiradas de forma <b>gratuita</b> em nossa sede ou você pode recebe-las em sua casa, <b>pagando apenas pelo frete.</b></p>
-      <p>Você poderá iniciar um novo hábito que fará bem para o meio ambiente e para sua própria <b>mente</b>.</p>
+    <div class="col-md-3">
+      <div class="card">
+        <div class="card-img">
+          <i class="bi bi-pc-display icone"></i>
+        </div>
+        <div class="card-body">
+          <h5 class="card-title">Equipamentos de Informática</h5>
+          <p class="card-text">Computador, fonte alimentação, monitor (Crt, LCD e LED), notebook, netbook, teclado, mouse, caixa de som, no-break, estabilizador, cabos de energia, Usb, rede, Lpt, Vga. Placa mãe, fax, e etc.</p>
+          <a class="btn btn-azul">Saiba mais</a>
+        </div>
+      </div>
     </div>
-    <div class="col-md-6">
-      <iframe width="500" height="300" src="https://www.youtube.com/embed/tf2AYWKtYFg" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+    <div class="col-md-3">
+      <div class="card">
+        <div class="card-img">
+          <i class="bi bi-telephone icone"></i>
+        </div>
+        <div class="card-body">
+          <h5 class="card-title">Equipamento de Telefonia</h5>
+          <p class="card-text">Central telefônica, telefone de mesa, celular, iPad, iPod, iPhone, smartphone, carregador e cabo telefônico.</p>
+          <a class="btn btn-azul">Saiba mais</a>
+        </div>
+      </div>
     </div>
-    <div class="text-center mt-4">
-      <button class="btn btn-lg btn-verde">PARTICIPE</button>
+    <div class="col-md-3">
+      <div class="card">
+        <div class="card-img">
+          <i class="bi bi-printer icone"></i>
+        </div>
+        <div class="card-body">
+          <h5 class="card-title">Utensílios Domésticos</h5>
+          <p class="card-text">Televisor (Tubo, Plasma, LCD e LED), rádio relógio, aparelho de som, batedeira, cafeteira, microondas, vídeo game, geladeira, vídeo cassete, DVD e ferro de passar roupa.</p>
+          <a class="btn btn-azul">Saiba mais</a>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-3">
+      <div class="card">
+        <div class="card-img">
+          <i class="bi bi-shield-fill-check icone"></i>
+        </div>
+        <div class="card-body">
+          <h5 class="card-title">Metais não Ferrosos</h5>
+          <p class="card-text">Cobre, alumínio (perfil, chaparia, bloco), metal, bronze, inox.</p>
+          <a class="btn btn-azul">Saiba mais</a>
+        </div>
+      </div>
     </div>
   </section>
+  <hr>
+  <div class="row">
+    <div class="col-md-10">
+      <p>
+        POSTO DE COLETA:<br>
+        Fones: (62) 3232-3232 / 99999-9999<br>
+        Rua 1 n° 5723, Qd. 97, Lt. 10<br>
+        Jardim Florescente, Goiânia-GO
+      </p>
+    </div>
+    <div class="col-md-2">
+      <a class="icone-whatsapp"><i class="bi bi-whatsapp"></i></a>
+    </div>
+  </div>
 </div>
 
 <app-footer></app-footer>

@@ -1,17 +1,30 @@
-.area-banner {
-  background-image: url(../../../../assets/img/overlay.png), url(../../../../assets/img/logoBackgroundAlt2.jpg);
-  background-attachment: scroll;
-  background-position: center;
-  background-size: cover;
-  text-align: center;
-  margin-left: auto;
-  margin-right: auto;
+b, h2 {
+  color: #359901;
 }
 
 .secao-1 {
   padding-top: 30px;
 }
 
-b, h2 {
-  color: #359901;
+.card {
+  height: 490px;
+}
+
+.card-img {
+  font-size: 130px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #00566c;
+}
+
+.btn-azul {
+  position: absolute;
+  bottom: 10px;
+}
+
+.icone-whatsapp {
+  font-size: 40px;
+  cursor: pointer;
+  color: #199e0d;
 }

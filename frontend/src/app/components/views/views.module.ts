@@ -1,5 +1,6 @@
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
+import { NgbCarousel, NgbCarouselModule } from '@ng-bootstrap/ng-bootstrap';
 
 import { ComunsModule } from './../comuns/comuns.module';
 import { HomeComponent } from './home/home.component';
@@ -10,7 +11,8 @@ import { HomeComponent } from './home/home.component';
   ],
   imports: [
     CommonModule,
-    ComunsModule
+    ComunsModule,
+    NgbCarouselModule
   ],
   exports: [
 

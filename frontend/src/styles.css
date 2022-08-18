@@ -7,6 +7,18 @@ a {
   text-decoration: none;
 }
 
+.btn {
+  color: #ffffff;
+}
+
 .btn-verde {
   background-color: #359901;
+}
+
+.btn-azul {
+  background-color: #00566c;
+}
+
+.carousel-inner .sr-only {
+  display: none;
 }

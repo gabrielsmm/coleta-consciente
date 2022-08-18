@@ -1,6 +1,6 @@
 <div class="container-fluid sticky-top navbar-background">
   <nav class="navbar navbar-expand-md">
-    <a class="navbar-brand" href="#"><img class="img-fluid" src="assets/img/logo.png" alt="Logo" width="70"></a>
+    <a class="navbar-brand" href="#"><img class="img-fluid" src="assets/img/logo.png" alt="Logo" width="130"></a>
     <button class="navbar-toggler" (click)="showCollapse()" type="button" data-toggle="collapse" data-target="#navbarToggler" aria-controls="navbarToggler" aria-expanded="false" aria-label="Toggle navigation">
       <i class="bi bi-list"></i>
     </button>
@@ -11,13 +11,10 @@
           <a class="nav-link" [ngClass]="{'link-ativo': isHome}" [routerLink]="['/inicio']"><i class="bi bi-house"></i> PÁGINAL INICIAL</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" [ngClass]="{'link-ativo': isSobre}" [routerLink]="['/inicio']"><i class="bi bi-question-circle"></i> SOBRE</a>
+          <a class="nav-link" [ngClass]="{'link-ativo': isColetamos}" [routerLink]="['/inicio']"><i class="bi bi-question-circle"></i> O QUE COLETAMOS</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" [ngClass]="{'link-ativo': isPedidos}" [routerLink]="['/inicio']"><i class="bi bi-basket2"></i> PEDIDOS</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" [ngClass]="{'link-ativo': isContato}" [routerLink]="['/inicio']"><i class="bi bi-person-lines-fill"></i> CONTATO</a>
+          <a class="nav-link" [ngClass]="{'link-ativo': isColeta}" [routerLink]="['/inicio']"><i class="bi bi-basket2"></i> SOLICITAR COLETA</a>
         </li>
       </ul>
     </div>

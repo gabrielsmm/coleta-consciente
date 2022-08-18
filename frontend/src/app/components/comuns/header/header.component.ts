@@ -10,9 +10,8 @@ export class HeaderComponent implements OnInit {
 
   show: boolean = false;
   public isHome: boolean = false;
-  public isSobre: boolean = false;
-  public isPedidos: boolean = false;
-  public isContato: boolean = false;
+  public isColetamos: boolean = false;
+  public isColeta: boolean = false;
 
   constructor(private router: Router) { }
 
@@ -21,14 +20,11 @@ export class HeaderComponent implements OnInit {
       case '/inicio':
         this.isHome = true;
         break;
-      case '/sobre':
-        this.isSobre = true;
+      case '/o-que-coletamos':
+        this.isColetamos = true;
         break;
-      case '/pedidos':
-        this.isPedidos = true;
-        break;
-      case '/contato':
-        this.isContato = true;
+      case '/solicita-coleta':
+        this.isColeta = true;
         break;
       default:
         this.isHome = true;
