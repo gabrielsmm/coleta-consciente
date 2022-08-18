@@ -1,7 +1,14 @@
 .footer {
+  box-shadow: 2px 2px 5px 1px rgba(0, 0, 0, 0.2);
   color: #000000;
   min-height: 10%;
   position: static;
   bottom: 0;
   z-index: 1000;
+}
+
+.icone-whatsapp {
+  font-size: 40px;
+  cursor: pointer;
+  color: #199e0d;
 }

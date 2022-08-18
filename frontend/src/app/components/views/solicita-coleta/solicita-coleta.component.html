@@ -1,0 +1,60 @@
+<app-header></app-header>
+
+<div class="container">
+  <section class="secao-1 textos">
+    <p>
+      A <b>Coleta Consciente</b> trabalha com coleta de resíduos eletroeletrônicos sem custo mediante quantidade
+      mínima, somente para Goiânia e região metropolitana.
+    </p>
+    <p>Quando a quantidade de resíduos eletroeletrônicos não atingir o mínimo para coleta sem custo
+      pode-se optar pelas seguintes opções:
+    </p>
+    <ol>
+      <li>O cliente poderá levar os resíduos até a <b>Coleta Consciente</b>.</li>
+      <li>O cliente aguardará uma data onde a <b>Coleta Consciente</b> fará um encaixe na rota.</li>
+      <li>O cliente realizará o pagamento da taxa de coleta (Entre em contato).</li>
+    </ol>
+  </section>
+  <section class="secao-2 textos">
+    <p>Informe os dados para coleta:</p>
+    <div class="row inputs">
+      <div class="col-md-4">
+        <input type="number" [(ngModel)]="coleta.quantidade" (keypress)="appService.keyPressNumbers($event)" class="form-control" placeholder="Quantidade (Estimativa)" name="quantidade" required>
+      </div>
+      <div *ngIf="isQuantidadeValida" class="col-md-6">
+        <span class="text-danger" style="font-size: 16px;">Desculpe, essa quantidade não atinge o mínimo para coleta.</span>
+      </div>
+    </div>
+    <div class="row inputs">
+      <div class="col-md-6">
+        <input class="form-control" [(ngModel)]="coleta.cep" (ngModelChange)="validarCEP($event)" placeholder="CEP" name="cep" mask="00000-000"  required>
+        <span *ngIf="!isCepValido && !appService.isNullOrUndefined(coleta.cep) && coleta.cep !== ''" class="text-danger" style="font-size: 14px;">CEP informado é inválido.</span>
+      </div>
+      <div class="col-md-6">
+        <input class="form-control" [(ngModel)]="coleta.estado" [readonly]="true" placeholder="Estado" name="estado" required>
+      </div>
+    </div>
+
+    <div class="row inputs">
+      <div class="col-md-6">
+        <input class="form-control" [(ngModel)]="coleta.cidade" [readonly]="true" placeholder="Cidade" name="cidade" required>
+      </div>
+      <div class="col-md-6">
+        <input class="form-control" [(ngModel)]="coleta.bairro" [readonly]="true" placeholder="Bairro" name="bairro" required>
+      </div>
+    </div>
+
+    <div class="row inputs">
+      <div class="col-md-6">
+        <input class="form-control" [(ngModel)]="coleta.rua" [readonly]="true" placeholder="Rua" name="rua" required>
+      </div>
+      <div class="col-md-6">
+        <input class="form-control" [(ngModel)]="coleta.complemento" matInput placeholder="Complemento" name="complemento" required>
+      </div>
+    </div>
+
+    <a class="btn btn-verde" (click)="solicitaColeta()">Solicitar coleta</a>
+  </section>
+</div>
+
+<app-footer></app-footer>
