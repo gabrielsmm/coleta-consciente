@@ -11,8 +11,9 @@ import { Component, OnInit } from '@angular/core';
 export class SolicitaColetaComponent implements OnInit {
 
   public coleta: Coleta = new Coleta();
-  public isQuantidadeValida = false;
+  public isQuantidadeValida = true;
   public isCepValido = false;
+  public isComplementoValido = true;
 
   constructor(private validaCepService: ValidaCepService,
     public appService: AppService) { }
@@ -23,14 +24,20 @@ export class SolicitaColetaComponent implements OnInit {
   solicitaColeta() {
     console.log('Solicitando coleta...');
     if (this.coleta.quantidade < 10 || this.appService.isNullOrUndefined(this.coleta.quantidade)) {
-      this.isQuantidadeValida = true;
+      this.isQuantidadeValida = false;
       return;
     } else {
-      this.isQuantidadeValida = false;
+      this.isQuantidadeValida = true;
     }
     if (!this.isCepValido) {
       this.coleta.cep = ' ';
       return;
+    }
+    if (this.appService.isNullOrUndefined(this.coleta.complemento) || this.coleta.complemento == '') {
+      this.isComplementoValido = false;
+      return;
+    } else {
+      this.isComplementoValido = true;
     }
   }
 
@@ -61,6 +68,12 @@ export class SolicitaColetaComponent implements OnInit {
 
         }
       })
+    } else if (cep.length <= 0) {
+      this.coleta.estado = "";
+      this.coleta.cidade = "";
+      this.coleta.bairro = "";
+      this.coleta.rua = "";
+      this.coleta.complemento = "";
     }
   }
 

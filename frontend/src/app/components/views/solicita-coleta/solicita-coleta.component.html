@@ -21,7 +21,7 @@
       <div class="col-md-4">
         <input type="number" [(ngModel)]="coleta.quantidade" (keypress)="appService.keyPressNumbers($event)" class="form-control" placeholder="Quantidade (Estimativa)" name="quantidade" required>
       </div>
-      <div *ngIf="isQuantidadeValida" class="col-md-6">
+      <div *ngIf="!isQuantidadeValida" class="col-md-6">
         <span class="text-danger" style="font-size: 16px;">Desculpe, essa quantidade não atinge o mínimo para coleta.</span>
       </div>
     </div>
@@ -50,6 +50,7 @@
       </div>
       <div class="col-md-6">
         <input class="form-control" [(ngModel)]="coleta.complemento" matInput placeholder="Complemento" name="complemento" required>
+        <span *ngIf="!isComplementoValido && appService.isNullOrUndefined(coleta.complemento) || coleta.complemento == ''" class="text-danger" style="font-size: 14px;">Informe o complemento.</span>
       </div>
     </div>
 
