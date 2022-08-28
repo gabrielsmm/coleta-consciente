@@ -1,7 +1,14 @@
-import { Coleta } from './../../../models/Coleta.model';
-import { AppService } from './../../../app.service';
-import { ValidaCepService } from './../../../services/validaCep.service';
 import { Component, OnInit } from '@angular/core';
+
+import { AppService } from './../../../app.service';
+import { Coleta } from './../../../models/Coleta.model';
+import { ColetaService } from './../../../services/coleta.service';
+import { ValidaCepService } from './../../../services/validaCep.service';
+
+export enum State {
+  StateDados = 1,
+  StateEnviado = 2
+}
 
 @Component({
   selector: 'app-solicita-coleta',
@@ -14,9 +21,12 @@ export class SolicitaColetaComponent implements OnInit {
   public isQuantidadeValida = true;
   public isCepValido = false;
   public isComplementoValido = true;
+  public state = State;
+  public stateChange = State.StateDados;
 
   constructor(private validaCepService: ValidaCepService,
-    public appService: AppService) { }
+    public appService: AppService,
+    private coletaService: ColetaService) { }
 
   ngOnInit(): void {
   }
@@ -39,6 +49,20 @@ export class SolicitaColetaComponent implements OnInit {
     } else {
       this.isComplementoValido = true;
     }
+    this.coletaService.create(this.coleta).subscribe({
+      next: (data) => {
+        this.clearColeta();
+        this.coleta.quantidade = 0;
+        this.coleta.cep = "";
+        this.stateChange = State.StateEnviado;
+      },
+      error: (err) => {
+        console.error(err);
+      },
+      complete: () => {
+
+      }
+    })
   }
 
   validarCEP(cep: any) {
@@ -47,11 +71,7 @@ export class SolicitaColetaComponent implements OnInit {
         next: (data) => {
           if (data.erro) {
             this.isCepValido = false;
-            this.coleta.estado = "";
-            this.coleta.cidade = "";
-            this.coleta.bairro = "";
-            this.coleta.rua = "";
-            this.coleta.complemento = "";
+            this.clearColeta();
           } else {
             this.isCepValido = true;
             this.coleta.estado = data.uf;
@@ -75,6 +95,18 @@ export class SolicitaColetaComponent implements OnInit {
       this.coleta.rua = "";
       this.coleta.complemento = "";
     }
+  }
+
+  voltarClick() {
+    this.stateChange = State.StateDados;
+  }
+
+  private clearColeta() {
+    this.coleta.estado = "";
+    this.coleta.cidade = "";
+    this.coleta.bairro = "";
+    this.coleta.rua = "";
+    this.coleta.complemento = "";
   }
 
 }
