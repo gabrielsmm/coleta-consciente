@@ -1,6 +1,10 @@
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
+import { MAT_DATE_LOCALE, MatNativeDateModule } from '@angular/material/core';
+import { MatDatepickerModule } from '@angular/material/datepicker';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatInputModule } from '@angular/material/input';
 import { NgxMaskModule } from 'ngx-mask';
 
 import { ComunsModule } from './../../comuns/comuns.module';
@@ -17,12 +21,18 @@ import { SolicitaColetaComponent } from './solicita-coleta.component';
     ComunsModule,
     FormsModule,
     SolicitaColetaRoutingModule,
+    MatInputModule,
+    MatNativeDateModule,
+    MatFormFieldModule,
+    MatDatepickerModule,
     NgxMaskModule.forRoot()
   ],
   exports: [
 
   ],
-  providers: [],
+  providers: [
+    {provide: MAT_DATE_LOCALE, useValue: 'pt-BR'}
+  ],
   entryComponents: []
 })
 export class SolicitaColetaModule { }

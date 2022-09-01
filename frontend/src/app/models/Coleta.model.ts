@@ -5,7 +5,7 @@ export class Coleta {
   cidade: string
   bairro: string
   rua: string
-  numero: string
   complemento: string
   quantidade: number
+  dataColeta: Date
 }

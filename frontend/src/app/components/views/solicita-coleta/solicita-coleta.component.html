@@ -19,40 +19,54 @@
       </section>
       <section class="secao-2 textos">
         <p>Informe os dados para coleta:</p>
-        <div class="row inputs">
+        <div class="row mb-2">
           <div class="col-md-4">
             <input type="number" [(ngModel)]="coleta.quantidade" (keypress)="appService.keyPressNumbers($event)" class="form-control" placeholder="Quantidade (Estimativa)" name="quantidade" required>
           </div>
-          <div *ngIf="!isQuantidadeValida" class="col-md-6">
+          <div *ngIf="!isQuantidadeValida || coleta.quantidade < 10" class="col-md-6">
             <span class="text-danger" style="font-size: 16px;">Desculpe, essa quantidade não atinge o mínimo para coleta.</span>
           </div>
         </div>
-        <div class="row inputs">
+        <div class="row mb-2">
           <div class="col-md-6">
             <input class="form-control" [(ngModel)]="coleta.cep" (ngModelChange)="validarCEP($event)" placeholder="CEP" name="cep" mask="00000-000"  required>
             <span *ngIf="!isCepValido && !appService.isNullOrUndefined(coleta.cep) && coleta.cep !== ''" class="text-danger" style="font-size: 14px;">CEP informado é inválido.</span>
           </div>
           <div class="col-md-6">
-            <input class="form-control" [(ngModel)]="coleta.estado" [readonly]="true" placeholder="Estado" name="estado" required>
+            <input class="form-control" [(ngModel)]="coleta.estado" [readonly]="true" [tabindex]="-1" placeholder="Estado" name="estado" required>
           </div>
         </div>
 
-        <div class="row inputs">
+        <div class="row mb-2">
           <div class="col-md-6">
-            <input class="form-control" [(ngModel)]="coleta.cidade" [readonly]="true" placeholder="Cidade" name="cidade" required>
+            <input class="form-control" [(ngModel)]="coleta.cidade" [readonly]="true" [tabindex]="-1" placeholder="Cidade" name="cidade" required>
           </div>
           <div class="col-md-6">
-            <input class="form-control" [(ngModel)]="coleta.bairro" [readonly]="true" placeholder="Bairro" name="bairro" required>
+            <input class="form-control" [(ngModel)]="coleta.bairro" [readonly]="true" [tabindex]="-1" placeholder="Bairro" name="bairro" required>
           </div>
         </div>
 
-        <div class="row inputs">
+        <div class="row">
           <div class="col-md-6">
-            <input class="form-control" [(ngModel)]="coleta.rua" [readonly]="true" placeholder="Rua" name="rua" required>
+            <input class="form-control" [(ngModel)]="coleta.rua" [readonly]="true" [tabindex]="-1" placeholder="Rua" name="rua" required>
           </div>
           <div class="col-md-6">
-            <input class="form-control" [(ngModel)]="coleta.complemento" matInput placeholder="Complemento" name="complemento" required>
+            <input class="form-control" [(ngModel)]="coleta.complemento" placeholder="Complemento" name="complemento" required>
             <span *ngIf="!isComplementoValido && appService.isNullOrUndefined(coleta.complemento) || coleta.complemento == ''" class="text-danger" style="font-size: 14px;">Informe o complemento.</span>
+          </div>
+        </div>
+
+        <div class="row align-items-center input-data">
+          <div class="col-md-3">
+            <mat-form-field style="width: 100%;">
+              <mat-label>Data para coleta</mat-label>
+              <input [(ngModel)]="coleta.dataColeta" matInput [matDatepicker]="picker">
+              <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+              <mat-datepicker #picker></mat-datepicker>
+            </mat-form-field>
+          </div>
+          <div *ngIf="!isDataColetaValida" class="col-md-6">
+            <span class="text-danger" style="font-size: 16px;">Informe a data para a coleta.</span>
           </div>
         </div>
 
@@ -66,7 +80,7 @@
         <h2>Coleta agendada com sucesso!</h2>
       </section>
       <div class="d-flex justify-content-end">
-        <a class="btn btn-verde mb-3" (click)="voltarClick()"><i class="bi bi-arrow-return-left"></i> Voltar</a>
+        <a class="btn btn-verde mb-3" (click)="voltarClick()"><i class="bi bi-arrow-return-left"></i> Página inicial</a>
       </div>
     </div>
   </div>

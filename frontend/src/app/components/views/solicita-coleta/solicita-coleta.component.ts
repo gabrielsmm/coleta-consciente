@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 
 import { AppService } from './../../../app.service';
 import { Coleta } from './../../../models/Coleta.model';
@@ -21,18 +22,19 @@ export class SolicitaColetaComponent implements OnInit {
   public isQuantidadeValida = true;
   public isCepValido = false;
   public isComplementoValido = true;
+  public isDataColetaValida = true;
   public state = State;
   public stateChange = State.StateDados;
 
   constructor(private validaCepService: ValidaCepService,
     public appService: AppService,
-    private coletaService: ColetaService) { }
+    private coletaService: ColetaService,
+    private router: Router) { }
 
   ngOnInit(): void {
   }
 
   solicitaColeta() {
-    console.log('Solicitando coleta...');
     if (this.coleta.quantidade < 10 || this.appService.isNullOrUndefined(this.coleta.quantidade)) {
       this.isQuantidadeValida = false;
       return;
@@ -49,11 +51,18 @@ export class SolicitaColetaComponent implements OnInit {
     } else {
       this.isComplementoValido = true;
     }
+    if (this.appService.isNullOrUndefined(this.coleta.dataColeta)) {
+      this.isDataColetaValida = false;
+      return;
+    } else {
+      this.isDataColetaValida = true;
+    }
     this.coletaService.create(this.coleta).subscribe({
       next: (data) => {
         this.clearColeta();
         this.coleta.quantidade = 0;
         this.coleta.cep = "";
+        this.coleta.dataColeta = new Date;
         this.stateChange = State.StateEnviado;
       },
       error: (err) => {
@@ -98,7 +107,7 @@ export class SolicitaColetaComponent implements OnInit {
   }
 
   voltarClick() {
-    this.stateChange = State.StateDados;
+    this.router.navigate(['/inicio']);
   }
 
   private clearColeta() {

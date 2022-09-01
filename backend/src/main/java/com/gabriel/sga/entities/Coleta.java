@@ -1,5 +1,7 @@
 package com.gabriel.sga.entities;
 
+import java.util.Date;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -18,25 +20,26 @@ public class Coleta {
 	private String cidade;
 	private String bairro;
 	private String rua;
-	private String numero;
 	private String complemento;
 	private Integer quantidade;
+	private Date dataColeta;
 	
 	public Coleta() {
 		
 	}
 
-	public Coleta(Long id, String cep, String estado, String cidade, String bairro, String rua, String numero,
-			String complemento, Integer quantidade) {
+	public Coleta(Long id, String cep, String estado, String cidade, String bairro, String rua, String complemento,
+			Integer quantidade, Date dataColeta) {
+		super();
 		this.id = id;
 		this.cep = cep;
 		this.estado = estado;
 		this.cidade = cidade;
 		this.bairro = bairro;
 		this.rua = rua;
-		this.numero = numero;
 		this.complemento = complemento;
 		this.quantidade = quantidade;
+		this.dataColeta = dataColeta;
 	}
 
 	public Long getId() {
@@ -87,14 +90,6 @@ public class Coleta {
 		this.rua = rua;
 	}
 
-	public String getNumero() {
-		return numero;
-	}
-
-	public void setNumero(String numero) {
-		this.numero = numero;
-	}
-
 	public String getComplemento() {
 		return complemento;
 	}
@@ -109,6 +104,14 @@ public class Coleta {
 
 	public void setQuantidade(Integer quantidade) {
 		this.quantidade = quantidade;
+	}
+
+	public Date getDataColeta() {
+		return dataColeta;
+	}
+
+	public void setDataColeta(Date dataColeta) {
+		this.dataColeta = dataColeta;
 	}
 	
 }
