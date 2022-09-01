@@ -17,41 +17,55 @@
           <li>O cliente realizará o pagamento da taxa de coleta (Entre em contato).</li>
         </ol>
       </section>
-      <section class="secao-2 textos">
+      <section class="secao-2">
         <p>Informe os dados para coleta:</p>
-        <div class="row mb-2">
+        <div class="row">
           <div class="col-md-4">
-            <input type="number" [(ngModel)]="coleta.quantidade" (keypress)="appService.keyPressNumbers($event)" class="form-control" placeholder="Quantidade (Estimativa)" name="quantidade" required>
+            <mat-form-field style="width: 100%;">
+              <input matInput type="number" [(ngModel)]="coleta.quantidade" (keypress)="appService.keyPressNumbers($event)" placeholder="Quantidade (Estimativa)" name="quantidade" required>
+            </mat-form-field>
           </div>
           <div *ngIf="!isQuantidadeValida || coleta.quantidade < 10" class="col-md-6">
             <span class="text-danger" style="font-size: 16px;">Desculpe, essa quantidade não atinge o mínimo para coleta.</span>
           </div>
         </div>
-        <div class="row mb-2">
+        <div class="row">
           <div class="col-md-6">
-            <input class="form-control" [(ngModel)]="coleta.cep" (ngModelChange)="validarCEP($event)" placeholder="CEP" name="cep" mask="00000-000"  required>
+            <mat-form-field style="width: 100%;">
+              <input matInput [(ngModel)]="coleta.cep" (ngModelChange)="validarCEP($event)" placeholder="CEP" name="cep" mask="00000-000"  required>
+            </mat-form-field>
             <span *ngIf="!isCepValido && !appService.isNullOrUndefined(coleta.cep) && coleta.cep !== ''" class="text-danger" style="font-size: 14px;">CEP informado é inválido.</span>
           </div>
           <div class="col-md-6">
-            <input class="form-control" [(ngModel)]="coleta.estado" [readonly]="true" [tabindex]="-1" placeholder="Estado" name="estado" required>
-          </div>
-        </div>
-
-        <div class="row mb-2">
-          <div class="col-md-6">
-            <input class="form-control" [(ngModel)]="coleta.cidade" [readonly]="true" [tabindex]="-1" placeholder="Cidade" name="cidade" required>
-          </div>
-          <div class="col-md-6">
-            <input class="form-control" [(ngModel)]="coleta.bairro" [readonly]="true" [tabindex]="-1" placeholder="Bairro" name="bairro" required>
+            <mat-form-field style="width: 100%;">
+              <input matInput [(ngModel)]="coleta.estado" [readonly]="true" [tabindex]="-1" placeholder="Estado" name="estado" required>
+            </mat-form-field>
           </div>
         </div>
 
         <div class="row">
           <div class="col-md-6">
-            <input class="form-control" [(ngModel)]="coleta.rua" [readonly]="true" [tabindex]="-1" placeholder="Rua" name="rua" required>
+            <mat-form-field style="width: 100%;">
+              <input matInput [(ngModel)]="coleta.cidade" [readonly]="true" [tabindex]="-1" placeholder="Cidade" name="cidade" required>
+            </mat-form-field>
           </div>
           <div class="col-md-6">
-            <input class="form-control" [(ngModel)]="coleta.complemento" placeholder="Complemento" name="complemento" required>
+            <mat-form-field style="width: 100%;">
+              <input matInput [(ngModel)]="coleta.bairro" [readonly]="true" [tabindex]="-1" placeholder="Bairro" name="bairro" required>
+            </mat-form-field>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-md-6">
+            <mat-form-field style="width: 100%;">
+              <input matInput [(ngModel)]="coleta.rua" [readonly]="true" [tabindex]="-1" placeholder="Rua" name="rua" required>
+            </mat-form-field>
+          </div>
+          <div class="col-md-6">
+            <mat-form-field style="width: 100%;">
+              <input matInput [(ngModel)]="coleta.complemento" placeholder="Complemento" name="complemento" required>
+            </mat-form-field>
             <span *ngIf="!isComplementoValido && appService.isNullOrUndefined(coleta.complemento) || coleta.complemento == ''" class="text-danger" style="font-size: 14px;">Informe o complemento.</span>
           </div>
         </div>
