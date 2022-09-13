@@ -32,6 +32,7 @@ export class SolicitaColetaComponent implements OnInit {
     private router: Router) { }
 
   ngOnInit(): void {
+    this.appService.scrollToTop();
   }
 
   solicitaColeta() {

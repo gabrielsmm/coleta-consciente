@@ -21,4 +21,12 @@ export class AppService {
     return obj === null || obj === undefined;
   }
 
+  scrollToTop() {
+    window.scroll({
+      top: 0,
+      left: 0,
+      behavior: 'smooth'
+    });
+  }
+
 }

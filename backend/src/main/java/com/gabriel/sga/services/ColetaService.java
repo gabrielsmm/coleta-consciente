@@ -24,7 +24,7 @@ public class ColetaService {
 		try {
 			return repository.save(obj);
 		} catch (org.springframework.dao.DataIntegrityViolationException e) {
-			throw new DataIntegrityViolationException("E-mail já cadastrado!");
+			throw new DataIntegrityViolationException("Não foi possível registrar a coleta.");
 		}
 	}
 	

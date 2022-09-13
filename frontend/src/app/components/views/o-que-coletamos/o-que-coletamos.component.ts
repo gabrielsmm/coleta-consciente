@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
+import { AppService } from './../../../app.service';
+
 @Component({
   selector: 'app-o-que-coletamos',
   templateUrl: './o-que-coletamos.component.html',
@@ -7,9 +9,10 @@ import { Component, OnInit } from '@angular/core';
 })
 export class OQueColetamosComponent implements OnInit {
 
-  constructor() { }
+  constructor(private appService: AppService) { }
 
   ngOnInit(): void {
+    this.appService.scrollToTop();
   }
 
 }
