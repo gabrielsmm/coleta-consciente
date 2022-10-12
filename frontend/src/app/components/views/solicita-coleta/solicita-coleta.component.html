@@ -83,8 +83,10 @@
             <span class="text-danger" style="font-size: 16px;">Informe a data para a coleta.</span>
           </div>
         </div>
-
-        <a class="btn btn-verde" (click)="solicitaColeta()">Solicitar coleta</a>
+        <div class="d-flex">
+          <button class="btn btn-verde" style="margin-right: 10px;" [disabled]="showProgressSpinner" (click)="solicitaColeta()">Solicitar coleta</button>
+          <mat-spinner *ngIf="showProgressSpinner" [diameter]="35"></mat-spinner>
+        </div>
       </section>
     </div>
 

@@ -5,6 +5,7 @@ import { MAT_DATE_LOCALE, MatNativeDateModule } from '@angular/material/core';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { NgxMaskModule } from 'ngx-mask';
 
 import { ComunsModule } from './../../comuns/comuns.module';
@@ -25,6 +26,7 @@ import { SolicitaColetaComponent } from './solicita-coleta.component';
     MatNativeDateModule,
     MatFormFieldModule,
     MatDatepickerModule,
+    MatProgressSpinnerModule,
     NgxMaskModule.forRoot()
   ],
   exports: [

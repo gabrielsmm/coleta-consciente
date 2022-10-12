@@ -23,6 +23,7 @@ export class SolicitaColetaComponent implements OnInit {
   public isCepValido = false;
   public isComplementoValido = true;
   public isDataColetaValida = true;
+  public showProgressSpinner = false;
   public state = State;
   public stateChange = State.StateDados;
 
@@ -32,7 +33,7 @@ export class SolicitaColetaComponent implements OnInit {
     private router: Router) { }
 
   ngOnInit(): void {
-    this.appService.scrollToTop();
+    setTimeout(() => this.appService.scrollToTop(), 100);
   }
 
   solicitaColeta() {
@@ -58,6 +59,7 @@ export class SolicitaColetaComponent implements OnInit {
     } else {
       this.isDataColetaValida = true;
     }
+    this.showProgressSpinner = true;
     this.coletaService.create(this.coleta).subscribe({
       next: (data) => {
         this.clearColeta();
@@ -65,12 +67,15 @@ export class SolicitaColetaComponent implements OnInit {
         this.coleta.cep = "";
         this.coleta.dataColeta = new Date;
         this.stateChange = State.StateEnviado;
+        this.showProgressSpinner = false;
       },
       error: (err) => {
+        this.showProgressSpinner = false;
         console.error(err);
+        this.appService.mensagemErro('Ocorreu um erro ao salvar os dados da coleta. Tente novamente mais tarde.');
       },
       complete: () => {
-
+        this.showProgressSpinner = false;
       }
     })
   }

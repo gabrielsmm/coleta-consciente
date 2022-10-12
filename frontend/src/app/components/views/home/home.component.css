@@ -3,11 +3,17 @@ b, h2 {
 }
 
 .secao-1 {
-  padding: 30px 0px;
+  padding: 35px 0px;
 }
 
 .card {
   height: 490px;
+  transition: 0.5s;
+}
+
+.card:hover {
+  opacity: 0.9;
+  transform: scale(1.1);
 }
 
 .card-img {
@@ -15,14 +21,14 @@ b, h2 {
   display: flex;
   align-items: center;
   justify-content: center;
-  color: #00566c;
+  background-color: #e9f8e2;
 }
 
 .card-text {
   text-align: center;
 }
 
-.btn-azul {
+.btn {
   position: absolute;
   bottom: 10px;
 }

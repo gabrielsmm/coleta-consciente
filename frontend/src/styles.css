@@ -22,3 +22,18 @@ a {
 .carousel-inner .sr-only {
   display: none;
 }
+
+.snack-background-red {
+  background-color: rgb(153, 50, 50);
+  color: #fff;
+}
+
+.snack-background-green {
+  background-color: #2b8b3b;
+  color: #fff;
+}
+
+/*Dialog*/
+.cdk-overlay-container {
+  z-index: 9999 !important;
+}
